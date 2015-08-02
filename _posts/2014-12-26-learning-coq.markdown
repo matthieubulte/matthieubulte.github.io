@@ -6,6 +6,7 @@ description: Coq learning change log
 categories:
 - blog
 permalink: learning-coq
+comments: true
 ---
 
 I'm still reading [http://www.cis.upenn.edu/~bcpierce/sf/current/](http://www.cis.upenn.edu/~bcpierce/sf/current/) finished chapter one on the basics and just started chapter two on induction proofs.

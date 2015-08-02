@@ -6,6 +6,7 @@ description: Mini-tutorial on fold
 categories:
 - blog
 permalink: on-fold
+comments: true
 ---
 
 ### Consable
