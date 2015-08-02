@@ -26,7 +26,7 @@ harmony:
     url: http://matthieubulte.github.io
 
   # Google Analytics key, leave blank to ignore
-  google_analytics_key:
+  google_analytics_key: UA-65883065-1
 
   # Profile links, leave blank to ignore
   social:
