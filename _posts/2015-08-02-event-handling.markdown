@@ -208,8 +208,8 @@ main = print . snd $ runState state 0
       handle Square
 {% endhighlight %}
 
-Great, we manages to achieve the same result but gained in modularity as it's now
-very easy do add an event type or a handler!
+Great, we managed to achieve the same result but gained in modularity as it's now
+very easy to add an event type or a handler!
 
 
 #### Wrap-up
