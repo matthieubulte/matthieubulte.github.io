@@ -85,8 +85,8 @@ work with the system.
 Now of course, this approach is not perfect shows to be less usable in bigger
 systems for the following reasons:
 
-+ In the last event based system I've worked on, we had more than 500 hundred events.
-No need to say that having this in one big data type is not practical. Solutions exist
++ In the last event based system I've worked on, we had more than 500 events. No
+need to say that having this in one big data type is not practical. Solutions exist
 to this problem - like having a tree of sum types in which the nodes represent parts
 of the application and leaves represent concrete events - but these solutions are
 not easy to put in place, use or maintain.
