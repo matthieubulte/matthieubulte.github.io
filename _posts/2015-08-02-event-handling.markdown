@@ -9,7 +9,7 @@ permalink: two-approaches-to-event-handling
 comments: true
 ---
 
-This blog post is the result of discussions I had in the last weeks on how one can setup a
+This blog post is the result of discussions (thanks to [tel](https://twitter.com/sdbo) for making his brain available!) I had in the last weeks on how one can setup a
 practical, maintainable and type safe event handling system in Haskell. We will
 review two solutions to this problem, both with different advantages and drawbacks,
 thus adapted to different situations.
