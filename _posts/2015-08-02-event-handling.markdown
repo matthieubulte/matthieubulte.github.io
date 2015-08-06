@@ -43,7 +43,7 @@ The most straightforward approach to event handling in Haskell is to represent a
 the possible events as one big sum type, the event handling function is then
 simply a case split over the incoming event.
 
-Let's see how the implementation looks like:
+Let's see what the implementation looks like:
 
 {% highlight haskell %}
 data Event = Set Integer
@@ -82,8 +82,8 @@ work with the system.
 
 + There is no magic, the implementation is very simple.
 
-Now of course, this approach is not perfect shows to be less usable in bigger
-systems for the following reasons:
+Now of course, this approach is not perfect and is less usable in bigger systems
+for the following reasons:
 
 + In the last event based system I've worked on, we had more than 500 events. No
 need to say that having this in one big data type is not practical. Solutions exist
@@ -115,7 +115,7 @@ class (Typeable e) => Event e
 
 This is basically a wrapper around the `Typeable` class that will just allow us
 to mark some `Typeable`s as being events. We do this in order to avoid throwing
-just any `Typeable` to the system by accident. What the `Typeable` class bring us
+just any `Typeable` to the system by accident. What the `Typeable` class brings us
 (for free, instances of `Typeable` can be derived using `DeriveDataTypeable`) is
 the `cast` function with the following signature:
 
@@ -189,7 +189,7 @@ mkHandle (Handler f:fs) x = maybe (return ()) f (cast x)
 {% endhighlight %}
 
 Let's now see how we can implement the same situation as in the previous approach
-using out new solution:
+using our new solution:
 
 {% highlight haskell %}
 handle :: (Event e) => e -> State Integer ()
@@ -214,7 +214,7 @@ very easy to add an event type or a handler!
 
 #### Wrap-up
 
-We had a look at two approaches to solving the same problem, each of them are to
-be used in different situations and have their advantages and drawbacks, one more
-focus on simplicity the other on modularity. It was for me a good exercise in the design
+We had a look at two approaches to solving the same problem, each of them is to
+be used in different situations and each has its advantages and drawbacks. One
+focuses more on simplicity, the other on modularity. It was for me a good exercise in the design
 of the solutions and the writing this article that I hope you found interesting!
