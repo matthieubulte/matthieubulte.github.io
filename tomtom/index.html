@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<title>For Tom</title>
+<style>
+    area :hover {
+        background-color: red;
+    }
+</style>
+</head>
+<body>
+
+<img src="butts.png" usemap="#image-map" >
+<div id="kids"></div>
+<map id="map" name="image-map">
+    <area alt="matthieu" title="matthieu" href="" coords="419,789,85" shape="circle">
+    <area alt="amy" title="amy" href="" coords="648,844,80" shape="circle">
+    <area alt="celine" title="celine" href="" coords="822,801,67" shape="circle">
+    <area alt="jo" title="jo" href="" coords="965,776,77" shape="circle">
+    <area alt="flo" title="flo" href="" coords="1151,780,69" shape="circle">
+    <area alt="adam" title="adam" href="" coords="1306,797,66" shape="circle">
+    <area alt="tom" title="tom" href="" coords="1484,786,78" shape="circle">
+    <area alt="alex" title="alex" href="" coords="1678,784,62" shape="circle">
+    <area alt="luc" title="luc" href="" coords="1864,814,74" shape="circle">
+</map>
+    
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            alert('To complete this puzzle, you must click on the nicest butt present on the picture.');
+        }, 1000);
+
+        function onclick(e) {
+            e.preventDefault();
+            var message = 
+            { 'matthieu': 'I agree, but no.',
+            'amy': 'So, you\'re into beauty marks 😎',
+            'celine': 'Hey, back off!',
+            'jo': 'Almost, this is the second best.',
+            'flo': 'NOT IMPLEMENTED - this won\'t be clicked anyways.',
+            'adam': 'Amy, give the computer back to Tom.',
+            'tom': 'Wow, such a narcissist.',
+            'luc': 'Have you seen how pale this butt is?'
+            };
+
+            var name = this.getAttribute('alt');
+            if (name == 'alex') {
+                confirm('Congratulations!!! Alex indeed has the nicest butt.\n\nFun fact: studies show that Alex\'s butt is also the friendliest and softest.');
+                window.location.href = './knowledge.html';
+            } else if (name in message) {
+                alert(message[name]);
+            } else {
+                alert('What the hell.')
+            }
+
+        }
+        $('area').each(function() {
+            var coords = this.coords.split(',');
+            var x = coords[0];
+            var y = coords[1];
+            var r = coords[2];
+            x = x - r;
+            y = y - r;
+            var d = $('<a alt="'+ this.alt +'" href=""></a>')
+                .css('position', 'absolute')
+                .css('display', 'block')
+                .css('top', y+'px')
+                .css('left', x+'px')
+                .css('width', (r*2)+'px')
+                .css('height', (r*2)+'px')
+                .css('border-radius', r+'px')
+                .on('click', onclick);
+                //.css('background-color', 'rgba(255,0,0,0.5)')
+            $('#kids').append(d);
+            this.remove();
+        });
+    });
+</script>
+</body>
+</html>

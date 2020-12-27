@@ -1,0 +1,262 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <title>For Tom</title>
+    <style>
+        #kids {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: auto;
+            margin-right: auto;
+            width:900px;
+            transition: transform 600s;
+        }
+
+        .flip-box {
+            background-color: transparent;
+            perspective: 1000px; /* Remove this if you don't want the 3D effect */
+            margin: 10px;
+            display: block;
+            width: 200px;
+            height: 200px;
+        }
+
+        /* This container is needed to position the front and back side */
+        .flip-box-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        /* Do an horizontal flip when you move the mouse over the flip box container */
+        .flipped .flip-box-inner {
+            transform: rotateY(180deg);
+        }
+
+        .solved .flip-box-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Position the front and back side */
+        .flip-box-front, .flip-box-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Safari */
+            backface-visibility: hidden;
+        }
+
+        /* Style the front side */
+        .flip-box-front {
+            background-color:red;
+            color: black;
+        }
+
+        /* Style the back side */
+        .flip-box-back {
+            background-color: red;
+            color: white;
+            transform: rotateY(180deg);
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+    </head>
+    <body>
+
+        <div id="kids">
+
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    </div>
+                </div>
+            </div>
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    </div>
+                </div>
+            </div>
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    </div>
+                </div>
+            </div>
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    </div>
+                </div>
+            </div>
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    </div>
+                </div>
+            </div>
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    </div>
+                </div>
+            </div>
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    </div>
+                </div>
+            </div>
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    </div>
+                </div>
+            </div>
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    </div>
+                </div>
+            </div>
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    </div>
+                </div>
+            </div>
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    </div>
+                </div>
+            </div>
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    </div>
+                </div>
+            </div>
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    </div>
+                </div>
+            </div>
+
+            
+
+
+        </div>
+        
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                alert('Oh, Butt Expert, let\'s see if you will be able to solve this new challenge. Find all of your friends on this picture in less than 10 seconds before and you will be a true hero!');
+            }, 2000);
+            
+            var clicked = undefined;
+            var animating = false;
+            var numSolved = 0;
+
+            function onWon() {
+                $('#kids').css('transform', 'rotateZ(20000deg)');
+                setTimeout(function() {
+                    confirm('Congratulations, you\'ve found your friends in less than 10 seconds!!! You really are a true hero.');
+                    window.location.href = './final.html';
+                },0);
+            }
+
+            function onclick(e) {
+                e.preventDefault();
+                var el = $(this);
+                if (el.hasClass('flipped') || animating || el.hasClass('solved')) return;
+
+                el.addClass('flipped');
+                if (clicked) {
+                    animating = true;
+                    setTimeout(function() {
+                        if (el.attr('data') === clicked.attr('data')) {
+                            clicked.removeClass('solved');
+                            el.removeClass('solved');
+                            numSolved++;
+                            if (numSolved === 8) {
+                                onWon();
+                            }
+                        } else {
+                            clicked.removeClass('flipped');
+                            el.removeClass('flipped');
+                        }
+                        clicked = undefined;
+                        animating = false;
+                    }, 1000);
+                } else {
+                    clicked = el;   
+                }
+
+            }
+
+            function shuffle(a) {
+                var j, x, i;
+                for (i = a.length - 1; i > 0; i--) {
+                    j = Math.floor(Math.random() * (i + 1));
+                    x = a[i];
+                    a[i] = a[j];
+                    a[j] = x;
+                }
+                return a;
+            }
+
+            $("#kids > .flip-box").on('click', onclick);
+
+
+            var labels = shuffle([0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7]);
+            var images = [
+                'amy-matt.jpeg', 'tom.jpg',
+                'jo-celine.jpg', 'saad.jpg', 'zach-adam.jpg',
+                'keli-phil.jpg', 'alex.jpg', 'flo-claire.jpg',
+            ]
+
+            $('.flip-box').each(function(index) {
+                var id = labels[index];
+                var img = images[id % images.length];
+
+                $(this).attr('data', id);
+
+                var el = $('<div class="flip-box-back"></div>');
+                el.css('background-image', 'url("' + img + '")');
+                
+                $(this).find('.flip-box-inner').append(el);
+            });
+
+        });
+    </script>
+    </body>
+    </html>
