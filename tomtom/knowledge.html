@@ -83,7 +83,7 @@ td {
 <script>
     $(document).ready(function() {
         setTimeout(function() {
-                alert('Oh, Butt Expert, let\'s see if you will be able to solve this new challenge. Find all of your friends on this picture in less than 10 seconds before and you will be a true hero!');
+                alert('Oh, Butt Expert, in this challenge, you will need to prove that you gained deep wisdom about the ways of the world. Show us that you are a crossword wizard, and I will show you the way to the next challenge.');
             }, 2000);
             
         var grid = [	
@@ -123,7 +123,7 @@ var clues = [
     "An activity Amy doesn't enjoy doing with you.",
     "Your first friend in this group.",
     "Flo's secret lover.",
-    "Activity you used to do with the French caterpillar. Two words.",
+    "Activity you used to do with the French caterpillar. Two words, no space in between.",
     "Where kangaroos live.",
 ];
 
@@ -205,7 +205,7 @@ $(".letter").click(function(){
 
 function checkIfSolved() {
     if (isSolved()) {
-        confirm('Congratulations, you\'ve found your friends in less than 10 seconds!!! You really are a true hero.');
+        confirm('Impressive! Only two people on this planet were able the successfully complete this challenge. You are indeed truly exceptional!');
         window.location.href = './speedtest.html';
     }
 }
@@ -216,7 +216,7 @@ function isSolved() {
             var ref = sol[i][j];
             if (ref) {
                 var inp = $(".pos-" + i + "-" + j).text();
-                if (inp !== ref) {
+                if (inp.toLowerCase() !== ref) {
                     console.log(i, j, inp, ref);
                     return false;
                 }

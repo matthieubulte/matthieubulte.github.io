@@ -19,7 +19,7 @@
     $(document).ready(function() {
         var t;
         setTimeout(function() {
-            alert('Oh, Butt Expert, let\'s see if you will be able to solve this new challenge. Find all of your friends on this picture in less than 10 seconds before and you will be a true hero!');
+            alert('Tom, we know you are a quick runner, but are you as well a quick clicker? Find all of your friends on this picture in less than 10 seconds and you will be a true hero!');
 
             t = setTimeout(function() {
                 alert('Too slow, looser.');
@@ -40,11 +40,9 @@
             if (Object.keys(friendsFound).length === 4) {
                 clearTimeout(t);
                 setTimeout(function() {
-                    confirm('Congratulations, you\'ve found your friends in less than 10 seconds!!! You really are a true hero.');
+                    confirm('Congratulations, your quest is almost over. Let\'s meet in a last challenge to finally settle this.');
                     window.location.href = './memory.html';
                 }, 1);
-            } else {
-                alert(message[name]);
             }
 
         }

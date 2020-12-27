@@ -4,24 +4,49 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <title>For Tom</title>
-
+<style>
+    body {
+        background-image: url("tomtom.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-size: 7rem;
+        transition: transform 1s;
+    }
+    #kids {
+        display: none;
+        text-align: center;
+    }
+    #kids img {
+        width: 30%;
+        margin-top: 5rem;
+    }
+</style>
 </head>
-<body>
 
-    <img src="tomtom.png" style="height: 50rem">
-    <div id="kids"></div>
+<body>
+    
+    <div id="kids">
+        <div class="">
+            Your present is a donation of CAD40 to
+        </div>
+
+        <div>
+            <a href="https://cofoodbank.com"><img src="https://cofoodbank.com/wp-content/uploads/2018/03/cofb_website_logo.png"/></a>
+        </div>
+    </div>
+
+
     
 <script>
     $(document).ready(function() {
-        // var t;
-        // setTimeout(function() {
-        //     // alert('Oh, Butt Expert, let\'s see if you will be able to solve this new challenge. Find all of your friends on this picture in less than 10 seconds before and you will be a true hero!');
-        //     var msg = new SpeechSynthesisUtterance();
-        //     msg.text = "Congratulations, you have saved Christmas";
-        //     window.speechSynthesis.speak(msg);
-
-        // }, 2000);
-        // santa is real\
+        setTimeout(function() {
+            alert('Welcome to the Tomple, a temple dedicated to Tom. Click on any Tom to find out what your present is, Tom.');
+        }, 1000);
+    
+        $(this).on('click', function() {
+            $('body').css('background-image', 'none');
+            $("#kids").css('display', 'inline');
+        });
         
     });
 </script>
