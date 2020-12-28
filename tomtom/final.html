@@ -2,36 +2,66 @@
 <html>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <link rel="icon" href="tomico.png">
 <title>For Tom</title>
 <style>
     body {
-        background-image: url("tomtom.png");
-        background-size: cover;
-        background-repeat: no-repeat;
         font-size: 7rem;
-        transition: transform 1s;
+        text-align: center;
     }
     #kids {
         display: none;
-        text-align: center;
     }
     #kids img {
         width: 30%;
         margin-top: 5rem;
+        min-width: 20rem;
+    }
+    #info {
+        font-size: 1.5rem;
+        text-align: left;
+        margin-left: auto;
+        margin-right: auto;
+        width: 30%;
+        min-width: 20rem;
+    }
+
+    .balloon {
+        position: absolute;
+        display: block;
     }
 </style>
 </head>
 
 <body>
     
+    <img id="image" src="tomtom.png"/>
+
+    <div id="balloons"></div>
     <div id="kids">
         <div class="">
-            Your present is a donation of CAD40 to
+            Your present is a donation of 40$ to the
         </div>
 
         <div>
-            <a href="https://cofoodbank.com"><img src="https://cofoodbank.com/wp-content/uploads/2018/03/cofb_website_logo.png"/></a>
+            <a href="https://cofoodbank.com">
+                <img src="https://cofoodbank.com/wp-content/uploads/2018/03/cofb_website_logo.png"/>
+            </a>
+            <div id="info">
+                <p>
+                    The Central Okanagan Food Bank is a non-profit, charitable organization committed to providing healthy, nutritious food to those who need it most.
+                    Facts about the COFB
+                </p>
+                <ul>
+                    <li>Their Kelowna location serves between 2,500-3,500 individuals per month</li>
+                    <li>Their Westside location serves approximately 800 individuals per month</li>
+                    <li>They distribute over $3,500,000 in food per annum</li>
+                    <li>They are run by an elected, volunteer Board of Directors. The Board oversees the Executive Director, staff and volunteers who manage the day-to-day operation of the Food Bank.</li>
+                </ul>
+                <p>
+                    The Central Okanagan Food Bank is a member of Food Banks Canada, Food Banks BC, the Kelowna Chamber of Commerce and the Greater Westside Board of Trade.
+                </p>
+            </div>
         </div>
     </div>
 
@@ -41,13 +71,78 @@
     $(document).ready(function() {
         setTimeout(function() {
             alert('Welcome to the Tomple, a temple dedicated to Tom. Click on any Tom to find out what your present is, Tom.');
-        }, 1000);
-    
-        $(this).on('click', function() {
-            $('body').css('background-image', 'none');
-            $("#kids").css('display', 'inline');
-        });
+            
         
+        function updateCSS(balloon) {
+            balloon.el
+                .css('left', $(window).width() * balloon.x)
+                .css('top', $(window).height() * balloon.y);
+        }
+
+        $(this).on('click', function() {
+            $('#image').css('display', 'none');
+            $("#kids").css('display', 'inline');
+
+
+
+            var balloons = [];
+            var colors = ["Maroon","Red","Orange","Yellow","Olive","Green","Purple","Fuchsia","Lime","Teal","Aqua","Blue","Navy","Black","Gray","Silver","White","IndianRed","LightCoral","Salmon","DarkSalmon","LightSalmon","Crimson","Red","FireBrick","DarkRed","Pink","LightPink","HotPink","DeepPink","MediumVioletRed","PaleVioletRed","Coral","Tomato","OrangeRed","DarkOrange","Orange","Gold","Yellow","LightYellow","LemonChiffon","LightGoldenrodYellow","PapayaWhip","Moccasin","PeachPuff","PaleGoldenrod","Khaki","DarkKhaki","Lavender","Thistle","Plum","Violet","Orchid","Fuchsia","Magenta","MediumOrchid","MediumPurple","BlueViolet","DarkViolet","DarkOrchid","DarkMagenta","Purple","RebeccaPurple","Indigo","MediumSlateBlue","SlateBlue","DarkSlateBlue","GreenYellow","Chartreuse","LawnGreen","Lime","LimeGreen","PaleGreen","LightGreen","MediumSpringGreen","SpringGreen","MediumSeaGreen","SeaGreen","ForestGreen","Green","DarkGreen","YellowGreen","OliveDrab","Olive","DarkOliveGreen","MediumAquamarine","DarkSeaGreen","LightSeaGreen","DarkCyan","Teal","Aqua","Cyan","LightCyan","PaleTurquoise","Aquamarine","Turquoise","MediumTurquoise","DarkTurquoise","CadetBlue","SteelBlue","LightSteelBlue","PowderBlue","LightBlue","SkyBlue","LightSkyBlue","DeepSkyBlue","DodgerBlue","CornflowerBlue","RoyalBlue","Blue","MediumBlue","DarkBlue","Navy","MidnightBlue","Cornsilk","BlanchedAlmond","Bisque","NavajoWhite","Wheat","BurlyWood","Tan","RosyBrown","SandyBrown","Goldenrod","DarkGoldenrod","Peru","Chocolate","SaddleBrown","Sienna","Brown","Maroon","White","Snow","Honeydew","MintCream","Azure","AliceBlue","GhostWhite","WhiteSmoke","Seashell","Beige","OldLace","FloralWhite","Ivory","AntiqueWhite","Linen","LavenderBlush","MistyRose","Gainsboro","LightGray","LightGrey","Silver","DarkGray","DarkGrey","Gray","Grey","DimGray","DimGrey","LightSlateGray","LightSlateGrey","SlateGray","SlateGrey","DarkSlateGray","DarkSlateGrey","Black"];
+
+            var id = 0;
+            
+            setInterval(function() {
+                var el = $('<span class="balloon"></span>');
+                var x = Math.random();
+                var s = 15 + Math.random() * 50;
+                var v = (0.01 + Math.random() * 0.01)/2;
+                var c = colors[Math.floor(Math.random() * colors.length)];
+                var o = Math.random() * 0.5 + 0.2;
+
+                var balloon  = {
+                    x: x,
+                    y: 0,
+                    v: v,
+                    el: el,
+                    id: id++
+                };
+
+                el
+                    .css('width', s)
+                    .css('height', s)
+                    .css('border-radius', s/2)
+                    .css('background-color', c)
+                    .css('opacity', o);
+
+                $("#balloons").append(el);
+                updateCSS(balloon);
+                balloons.push(balloon);
+            }, 1000/10);
+
+            setInterval(function() {
+                var toRemove = [];
+                var tri = '';
+                balloons.forEach(function(balloon) {
+                    balloon.y += balloon.v;
+                    if (balloon.y > 1.3) {
+                        toRemove.push(balloon);
+                        tri += '"' + balloon.id + '"';
+                    }
+                    updateCSS(balloon);
+                });
+
+                balloons = balloons.filter(function(b) {
+                    return tri.indexOf('"' + b.id + '"') == -1;
+                });
+
+                toRemove.forEach(function(balloon) {
+                    balloon.el.remove();
+                });
+
+            }, 50);
+
+            
+        });
+    }, 1000);
     });
 </script>
 </body>
