@@ -107,8 +107,10 @@ function game() {
       setTimeout(function() {
         document.querySelector(".sliding-puzzle").innerHTML = '<img src="sliding_imgs/final.jpg" style="width:100%; height:100%;"/>';
 
-        confirm('...');
-        window.location.href = './final.html';
+        setTimeout(() => {
+          confirm('Well done!');
+          window.location.href = './final.html';  
+        }, 1000);
       }, 1000);
       
       
@@ -200,7 +202,7 @@ function game() {
     }
   
   }
-  for(var i = 0; i < 20; i++) {
+  for(var i = 0; i < 100; i++) {
     shuffleLoop();
   }
 }
