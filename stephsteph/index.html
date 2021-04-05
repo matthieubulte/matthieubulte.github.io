@@ -3,8 +3,8 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <title>For Tom</title>
-    <link rel="icon" href="tomico.png">
+        <link rel="icon" href="steph_icon.png">
+        <title>For Steph</title>
     <style>
         #kids {
             display: flex;
@@ -180,8 +180,8 @@
     <script>
         $(document).ready(function() {
             setTimeout(function() {
-                alert('Smart, kind, fast. You have shown to have all qualities of a hero. But are you ready to face your past and challenge your memory with this challenge?');
-            }, 2000);
+                alert('Today is your birthday Stéphanie. To make sure your brain remains active with your increasing age, I have prepared a couple of challenges for you. These have been carefully scientifically developed, completing them will prove that you are sane and healthy and will guarantee you at least one more year of friendship with me. \n\nLet’s start with something simple and see how good your memory is. Don’t disappoint me.\n\nNow, if you are up for the challenge, click ok and your quest will begin.');
+            }, 500);
             
             var clicked = undefined;
             var animating = false;
@@ -190,8 +190,8 @@
             function onWon() {
                 $('#kids').css('transform', 'rotateZ(20000deg)');
                 setTimeout(function() {
-                    confirm('When you arrived here, you were just a man. Now, you have shown that Tom is more than a man, Tom is a legend. Follow me to find out what your present is.');
-                    window.location.href = './final.html';
+                    confirm('Well, well. It seems like you aren’t that old after all. Congratulations for completing your first challenge.');
+                    window.location.href = './crossword.html';
                 },0);
             }
 

@@ -4,8 +4,8 @@
     <link rel="icon" href="tomico.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<title>For Tom</title>
-</head>
+    <link rel="icon" href="steph_icon.png">
+    <title>For Steph</title></head>
 <body>
 
     <img src="waldo.png" usemap="#image-map">
@@ -28,8 +28,8 @@
     $(document).ready(function() {
         var t;
         setTimeout(function() {
-            alert('Tom, we know you are a quick runner, but are you as well a quick clicker? Find all of your friends on this picture in less than 10 seconds and you will be a true hero!');
-        }, 1000);
+            alert('We have now arrived to the Vision test. Let’s see if you need glasses or not. Find and click on all Steph and Celine faces you see.');
+        }, 500);
 
         var friendsFound = {};
 
@@ -44,7 +44,7 @@
             if (Object.keys(friendsFound).length === 12) {
                 clearTimeout(t);
                 setTimeout(function() {
-                    confirm('Congratulations, your quest is almost over. Let\'s meet in a last challenge to finally settle this.');
+                    confirm('Impressive.');
                     window.location.href = './sliding.html';
                 }, 1);
             }

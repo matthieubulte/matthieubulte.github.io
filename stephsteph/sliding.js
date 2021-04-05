@@ -2,6 +2,11 @@
 document.addEventListener("DOMContentLoaded", game);
 
 function game() {
+  setTimeout(function() {
+
+    alert('The time has come. This is your final challenge. Can you reconstruct the photo from these fragments? Good Luck.');
+
+  }, 500);
 
   // Data structure to hold positions of tiles
   var parentX = document.querySelector(".sliding-puzzle").clientHeight;
@@ -102,7 +107,8 @@ function game() {
       setTimeout(function() {
         document.querySelector(".sliding-puzzle").innerHTML = '<img src="sliding_imgs/final.jpg" style="width:100%; height:100%;"/>';
 
-        alert("Yippie!");
+        confirm('...');
+        window.location.href = './final.html';
       }, 1000);
       
       
@@ -194,8 +200,8 @@ function game() {
     }
   
   }
-  // for(var i = 0; i < 20; i++) {
-  //   shuffleLoop();
-  // }
+  for(var i = 0; i < 20; i++) {
+    shuffleLoop();
+  }
 }
 

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" href="steph_icon.png">
+    <title>For Steph</title>
+<style>
+    body {
+        font-size: 7rem;
+        text-align: center;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+    }
+    .balloon {
+        position: absolute;
+        display: block;
+    }
+</style>
+</head>
+
+<body>
+    
+    <img id="image" src="last_photo.png"/>
+
+    <div id="balloons"></div>
+    
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            alert('Wow Steph, you have completed all the challenges, congratulations! I am proud to scientifically certify that your are sane and that we will continue our long distance adventures for at least another year, until your next challenge.\n\nI look forward to moving into your new condo. Til then, please enjoy this photoshop of us at your new place.\n\nXoxo\nCeline');
+            
+        
+        function updateCSS(balloon) {
+            balloon.el
+                .css('left', $(window).width() * balloon.x)
+                .css('top', $(window).height() * balloon.y);
+        }
+
+
+            var balloons = [];
+            var colors = ["Maroon","Red","Orange","Yellow","Olive","Green","Purple","Fuchsia","Lime","Teal","Aqua","Blue","Navy","Black","Gray","Silver","White","IndianRed","LightCoral","Salmon","DarkSalmon","LightSalmon","Crimson","Red","FireBrick","DarkRed","Pink","LightPink","HotPink","DeepPink","MediumVioletRed","PaleVioletRed","Coral","Tomato","OrangeRed","DarkOrange","Orange","Gold","Yellow","LightYellow","LemonChiffon","LightGoldenrodYellow","PapayaWhip","Moccasin","PeachPuff","PaleGoldenrod","Khaki","DarkKhaki","Lavender","Thistle","Plum","Violet","Orchid","Fuchsia","Magenta","MediumOrchid","MediumPurple","BlueViolet","DarkViolet","DarkOrchid","DarkMagenta","Purple","RebeccaPurple","Indigo","MediumSlateBlue","SlateBlue","DarkSlateBlue","GreenYellow","Chartreuse","LawnGreen","Lime","LimeGreen","PaleGreen","LightGreen","MediumSpringGreen","SpringGreen","MediumSeaGreen","SeaGreen","ForestGreen","Green","DarkGreen","YellowGreen","OliveDrab","Olive","DarkOliveGreen","MediumAquamarine","DarkSeaGreen","LightSeaGreen","DarkCyan","Teal","Aqua","Cyan","LightCyan","PaleTurquoise","Aquamarine","Turquoise","MediumTurquoise","DarkTurquoise","CadetBlue","SteelBlue","LightSteelBlue","PowderBlue","LightBlue","SkyBlue","LightSkyBlue","DeepSkyBlue","DodgerBlue","CornflowerBlue","RoyalBlue","Blue","MediumBlue","DarkBlue","Navy","MidnightBlue","Cornsilk","BlanchedAlmond","Bisque","NavajoWhite","Wheat","BurlyWood","Tan","RosyBrown","SandyBrown","Goldenrod","DarkGoldenrod","Peru","Chocolate","SaddleBrown","Sienna","Brown","Maroon","White","Snow","Honeydew","MintCream","Azure","AliceBlue","GhostWhite","WhiteSmoke","Seashell","Beige","OldLace","FloralWhite","Ivory","AntiqueWhite","Linen","LavenderBlush","MistyRose","Gainsboro","LightGray","LightGrey","Silver","DarkGray","DarkGrey","Gray","Grey","DimGray","DimGrey","LightSlateGray","LightSlateGrey","SlateGray","SlateGrey","DarkSlateGray","DarkSlateGrey","Black"];
+
+            var id = 0;
+            
+            setInterval(function() {
+                var el = $('<span class="balloon"></span>');
+                var x = Math.random();
+                var s = 15 + Math.random() * 50;
+                var v = (0.01 + Math.random() * 0.01)/2;
+                var c = colors[Math.floor(Math.random() * colors.length)];
+                var o = Math.random() * 0.5 + 0.2;
+
+                var balloon  = {
+                    x: x,
+                    y: 0,
+                    v: v,
+                    el: el,
+                    id: id++
+                };
+
+                el
+                    .css('width', s)
+                    .css('height', s)
+                    .css('border-radius', s/2)
+                    .css('background-color', c)
+                    .css('opacity', o);
+
+                $("#balloons").append(el);
+                updateCSS(balloon);
+                balloons.push(balloon);
+            }, 1000/10);
+
+            setInterval(function() {
+                var toRemove = [];
+                var tri = '';
+                balloons.forEach(function(balloon) {
+                    balloon.y += balloon.v;
+                    if (balloon.y > 0.9) {
+                        toRemove.push(balloon);
+                        tri += '"' + balloon.id + '"';
+                    }
+                    updateCSS(balloon);
+                });
+
+                balloons = balloons.filter(function(b) {
+                    return tri.indexOf('"' + b.id + '"') == -1;
+                });
+
+                toRemove.forEach(function(balloon) {
+                    balloon.el.remove();
+                });
+
+            }, 50);
+
+            
+        });
+    }, 1000);
+    
+</script>
+</body>
+</html>
