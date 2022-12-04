@@ -31,6 +31,7 @@ const draw_grid = (function () {
 
     const l = 0.02;
     const eps = 0.001;
+    // const dotSize = 2;
 
     // Draw the line in a loop, updating the control points
     // to create a wiggly effect
@@ -58,6 +59,9 @@ const draw_grid = (function () {
                     ctx.beginPath();
                     ctx.moveTo(canvas.width * node.x, canvas.height * node.y);
                     ctx.lineTo(canvas.width * rowNodes[col + 1].x, canvas.height * rowNodes[col + 1].y);
+                    // ctx.beginPath();
+                    // ctx.arc(canvas.width * node.x, canvas.height * node.y, dotSize/2, 0, Math.PI * 2);
+                    // ctx.fill();
                     ctx.stroke();
                 }
 
@@ -66,6 +70,9 @@ const draw_grid = (function () {
                     ctx.beginPath();
                     ctx.moveTo(canvas.width * node.x, canvas.height * node.y);
                     ctx.lineTo(canvas.width * nodes[row + 1][col].x, canvas.height * nodes[row + 1][col].y);
+                    // ctx.beginPath();
+                    // ctx.arc(canvas.width * node.x, canvas.height * node.y, dotSize/2, 0, Math.PI * 2);
+                    // ctx.fill();
                     ctx.stroke();
                 }
             }
