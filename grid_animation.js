@@ -6,8 +6,8 @@ const draw_grid = (function () {
     const nodes = [];
     const onodes = [];
 
-    const rows = 20;
-    const cols = 20;
+    const rows = 50;
+    const cols = 50;
     const nodeSize = 1 / rows;
 
     for (let row = 0; row < rows + 1; row++) {
