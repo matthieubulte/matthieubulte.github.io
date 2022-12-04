@@ -85,6 +85,15 @@ li {
     display: flex;
     align-items: baseline;
     margin: 1rem 0;
+    justify-content: space-between;
+}
+
+#header p {
+    font-size: 0.5em;
+}
+
+#header p:hover {
+    cursor: pointer;
 }
 
 #header h1 {
@@ -114,5 +123,9 @@ li {
 #my-canvas {
     z-index: -1;
     position: fixed;
-    opacity: 0.05;
+    opacity: 0.1;
+}
+
+.hidden {
+    display: none;
 }

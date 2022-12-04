@@ -45,3 +45,7 @@ function animate() {
 
 // Start the animation loop
 animate();
+
+document.querySelector("#header p").addEventListener('click', function() {
+    canvas.classList.toggle('hidden')
+});
