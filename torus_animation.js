@@ -10,9 +10,9 @@ const draw_torus = (function () {
     const geometry = new THREE.TorusGeometry(1, 0.4, 16, 100);
 
     const material = new THREE.MeshBasicMaterial({
-        color: 0x000000,  
+        color: '#8a0f13',
         transparent: true,  // Allow transparency
-        opacity: 0.5,  // Set transparency to 50%
+        opacity: 0.65,  // Set transparency to 50%
         wireframe: true  // Show wireframe
     });
     // Create the cube and add it to the scene

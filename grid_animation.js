@@ -41,6 +41,7 @@ const draw_grid = (function () {
 
         // Clear the canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = '#8a0f13';
 
         for (let row = 0; row < nodes.length; row++) {
             const rowNodes = nodes[row];
