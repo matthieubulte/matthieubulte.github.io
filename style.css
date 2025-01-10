@@ -34,6 +34,10 @@ li {
     color: #8a0f13;
 }
 
+#publishedpapers {
+    margin-bottom: 4em;
+}
+
 #contact {
     position: fixed;
     z-index: 1030;
