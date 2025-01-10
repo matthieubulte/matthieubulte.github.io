@@ -34,8 +34,17 @@ li {
     color: #8a0f13;
 }
 
-#publishedpapers {
+#acceptedpapers {
     margin-bottom: 4em;
+}
+
+h3 > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h3>a:hover {
+    text-decoration: underline;
 }
 
 #contact {
